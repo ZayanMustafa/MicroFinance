@@ -1,0 +1,89 @@
+{
+    "applications": [
+      {
+        "id": 1,
+        "title": "Wedding Loans",
+        "status": "Pending",
+        "loanAmount": "PKR 3 Lakh",
+        "timeToDeliver": "4 years"
+      },
+      {
+        "id": 2,
+        "title": "Home Construction Loans",
+        "status": "Approved",
+        "loanAmount": "PKR 10 Lakh",
+        "timeToDeliver": "5 years"
+      },
+      {
+        "id": 3,
+        "title": "Business Startup Loans",
+        "status": "Pending",
+        "loanAmount": "PKR 10 Lakh",
+        "timeToDeliver": "5 years"
+      },
+      {
+        "id": 4,
+        "title": "Education Loans",
+        "status": "Approved",
+        "loanAmount": "Based on requirement",
+        "timeToDeliver": "4 years"
+      },
+      {
+        "id": 5,
+        "title": "Car Loan",
+        "status": "Pending",
+        "loanAmount": "PKR 8 Lakh",
+        "timeToDeliver": "5 years"
+      },
+      {
+        "id": 6,
+        "title": "Personal Loans",
+        "status": "Approved",
+        "loanAmount": "PKR 3 Lakh",
+        "timeToDeliver": "3 years"
+      },
+      {
+        "id": 7,
+        "title": "Travel Loan",
+        "status": "Pending",
+        "loanAmount": "PKR 1.5 Lakh",
+        "timeToDeliver": "2 years"
+      },
+      {
+        "id": 8,
+        "title": "Health Loan",
+        "status": "Approved",
+        "loanAmount": "PKR 4 Lakh",
+        "timeToDeliver": "5 years"
+      },
+      {
+        "id": 9,
+        "title": "Home Renovation Loan",
+        "status": "Pending",
+        "loanAmount": "PKR 6 Lakh",
+        "timeToDeliver": "4 years"
+      },
+      {
+        "id": 10,
+        "title": "Business Expansion Loan",
+        "status": "Approved",
+        "loanAmount": "PKR 20 Lakh",
+        "timeToDeliver": "5 years"
+      },
+      {
+        "id": 11,
+        "title": "Education Loan for Higher Studies",
+        "status": "Pending",
+        "loanAmount": "PKR 15 Lakh",
+        "timeToDeliver": "6 years"
+      },
+      {
+        "id": 12,
+        "title": "Agricultural Loan",
+        "status": "Approved",
+        "loanAmount": "PKR 7 Lakh",
+        "timeToDeliver": "4 years"
+      }
+    ]
+  }
+  
