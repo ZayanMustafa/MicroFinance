@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import Saylani from '../assets/saylani.png';
+
 
 const Navbar = ({ userId, activePage }) => {
   const [user, setUser] = useState(null);
@@ -40,7 +40,7 @@ const Navbar = ({ userId, activePage }) => {
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <img
-            src={Saylani}
+            src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fsaylaniwelfare.com%2FEn&psig=AOvVaw26Rghgv-bUlneygyUimGe-&ust=1737938031377000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCODr2OmRkosDFQAAAAAdAAAAABAE"
             className="h-8"
             alt="Logo"
           />
