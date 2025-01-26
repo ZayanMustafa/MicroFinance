@@ -30,15 +30,18 @@ const LoanCalculator = () => {
   const [loanAmount, setLoanAmount] = useState("");
   const [loanPeriod, setLoanPeriod] = useState(3);
   const [monthlyPayment, setMonthlyPayment] = useState(null);
+  const [guarantorForm, setGuarantorForm] = useState(false);
+  const [name, setName] = useState("");
+  const [cnic, setCnic] = useState("");
+  const [email, setEmail] = useState("");
+  const [secondName, setSecondName] = useState("");
+  const [secondCnic, setSecondCnic] = useState("");
+  const [secondEmail, setSecondEmail] = useState("");
+  const [secondNumber, setSecondNumber] = useState("");
   const [showPopup, setShowPopup] = useState(false);
   const [popupMessage, setPopupMessage] = useState("");
   const [popupType, setPopupType] = useState(""); // success or error
-  const [cnic, setCnic] = useState("");
-  const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-  const [showSecondPopup, setShowSecondPopup] = useState(false);
 
-  const user = null; // Set to null to show second popup
   // Loan calculation function
   const calculateLoanPayment = (loanAmount, loanPeriod) => {
     const annualRate = 0.1; // 10% annual interest
@@ -80,29 +83,25 @@ const LoanCalculator = () => {
     }
   };
 
+  const handleGuarantorFormSubmit = () => {
+    // Save data to the database
+    console.log("Guarantor 1:", { name, cnic, email });
+    console.log("Guarantor 2:", { secondName, secondCnic, secondEmail, secondNumber });
+    // Proceed further or redirect as necessary
+  };
+
   useEffect(() => {
     if (showPopup && popupType === "success") {
       const firstPopupTimer = setTimeout(() => {
         setShowPopup(false);
-        setShowSecondPopup(true);
+        setGuarantorForm(true); // Show guarantor form after the first popup
       }, 5000); // First popup closes after 5 seconds
-
-      const secondPopupTimer = setTimeout(() => {
-        setShowSecondPopup(false);
-        navigate('/navbar');
-      }, 12000); // Second popup closes after 12 seconds
 
       return () => {
         clearTimeout(firstPopupTimer);
-        clearTimeout(secondPopupTimer);
       };
     }
   }, [showPopup, popupType]);
-
-  const handleSecondPopupSubmit = () => {
-    console.log("User Info:", { cnic, email, name });
-    setShowSecondPopup(false);
-  };
 
   return (
     <div className="container mx-auto p-6 bg-gray-50 rounded-lg shadow-md">
@@ -118,51 +117,72 @@ const LoanCalculator = () => {
             {popupType === "success" ? "Success" : "Error"}
           </h2>
           <p>{popupMessage}</p>
-          {popupType === "success" && (
-            <button
-              onClick={() => setShowSecondPopup(true)}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg mt-4"
-            >
-              Sign In to Continue
-            </button>
-          )}
         </div>
       )}
 
-      {/* Second Popup */}
-      {!user && showSecondPopup && (
-        <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 p-6 bg-white rounded-lg shadow-lg text-center">
-          <h2 className="text-xl font-semibold mb-4">Enter Your Details</h2>
+      {/* Guarantor Form */}
+      {guarantorForm && (
+        <div className="card p-6 bg-white rounded-lg shadow-lg text-center">
+          <h2 className="text-xl font-semibold mb-4">Enter Guarantor Details</h2>
+          {/* Guarantor 1 */}
           <TextField
-            label="Name"
+            label="Guarantor 1 Name"
             variant="outlined"
             value={name}
             onChange={(e) => setName(e.target.value)}
             className="w-full mb-2"
           />
           <TextField
-            label="Email"
-            variant="outlined"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full mb-2"
-          />
-          <TextField
-            label="CNIC"
+            label="Guarantor 1 CNIC"
             variant="outlined"
             value={cnic}
             onChange={(e) => setCnic(e.target.value)}
             className="w-full mb-2"
           />
+          <TextField
+            label="Guarantor 1 Email"
+            variant="outlined"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            className="w-full mb-2"
+          />
+          {/* Guarantor 2 */}
+          <TextField
+            label="Guarantor 2 Name"
+            variant="outlined"
+            value={secondName}
+            onChange={(e) => setSecondName(e.target.value)}
+            className="w-full mb-2"
+          />
+          <TextField
+            label="Guarantor 2 CNIC"
+            variant="outlined"
+            value={secondCnic}
+            onChange={(e) => setSecondCnic(e.target.value)}
+            className="w-full mb-2"
+          />
+          <TextField
+            label="Guarantor 2 Email"
+            variant="outlined"
+            value={secondEmail}
+            onChange={(e) => setSecondEmail(e.target.value)}
+            className="w-full mb-2"
+          />
+          <TextField
+            label="Guarantor 2 Phone Number"
+            variant="outlined"
+            value={secondNumber}
+            onChange={(e) => setSecondNumber(e.target.value)}
+            className="w-full mb-2"
+          />
           <button
-            onClick={handleSecondPopupSubmit}
+            onClick={handleGuarantorFormSubmit}
             className="bg-blue-600 text-white px-4 py-2 rounded-lg mt-4"
           >
             Submit
           </button>
         </div>
       )}
-
 
       {/* Loan Form */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
