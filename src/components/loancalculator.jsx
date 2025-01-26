@@ -36,7 +36,7 @@ const LoanCalculator = () => {
   const [loanAmount, setLoanAmount] = useState("");
   const [loanPeriod, setLoanPeriod] = useState(3);
   const [monthlyPayment, setMonthlyPayment] = useState(null);
-  const [showGuaranteeForm, setShowGuaranteeForm] = useState(false);
+  // const [showGuaranteeForm, setShowGuaranteeForm] = useState(false);
   const [openModal, setOpenModal] = useState(false); // Track modal visibility
 
   const calculateLoanPayment = (loanAmount, loanPeriod) => {
