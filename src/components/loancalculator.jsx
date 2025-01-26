@@ -38,7 +38,7 @@ const LoanCalculator = () => {
   const [name, setName] = useState("");
   const [showSecondPopup, setShowSecondPopup] = useState(false);
 
-  const user = true; // Set to null to show second popup
+  const user = null; // Set to null to show second popup
   // Loan calculation function
   const calculateLoanPayment = (loanAmount, loanPeriod) => {
     const annualRate = 0.1; // 10% annual interest
