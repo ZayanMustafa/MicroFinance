@@ -1,5 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { TextField } from "@mui/material";
+import React, { useState } from "react";
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 
 const loanCategories = {
   "Wedding Loans": {
@@ -30,21 +36,11 @@ const LoanCalculator = () => {
   const [loanAmount, setLoanAmount] = useState("");
   const [loanPeriod, setLoanPeriod] = useState(3);
   const [monthlyPayment, setMonthlyPayment] = useState(null);
-  const [guarantorForm, setGuarantorForm] = useState(false);
-  const [name, setName] = useState("");
-  const [cnic, setCnic] = useState("");
-  const [email, setEmail] = useState("");
-  const [secondName, setSecondName] = useState("");
-  const [secondCnic, setSecondCnic] = useState("");
-  const [secondEmail, setSecondEmail] = useState("");
-  const [secondNumber, setSecondNumber] = useState("");
-  const [showPopup, setShowPopup] = useState(false);
-  const [popupMessage, setPopupMessage] = useState("");
-  const [popupType, setPopupType] = useState(""); // success or error
+  const [showGuaranteeForm, setShowGuaranteeForm] = useState(false);
+  const [openModal, setOpenModal] = useState(false); // Track modal visibility
 
-  // Loan calculation function
   const calculateLoanPayment = (loanAmount, loanPeriod) => {
-    const annualRate = 0.1; // 10% annual interest
+    const annualRate = 0.001; // 10% annual interest
     const monthlyRate = annualRate / 12;
     const numberOfPayments = loanPeriod * 12;
 
@@ -65,124 +61,21 @@ const LoanCalculator = () => {
       loanPeriod <= 0 ||
       loanPeriod > maxLoanPeriod
     ) {
-      setPopupMessage(
-        `Invalid input! Loan amount must be within ${maxLoanAmount ? maxLoanAmount + " PKR" : "the required range"
-        }, and duration must not exceed ${maxLoanPeriod} years.`
-      );
-
-      setPopupType("error");
-      setShowPopup(true);
+      alert("Invalid input! Loan amount or period exceeds limits.");
     } else {
       const payment = calculateLoanPayment(loanAmount, loanPeriod);
       setMonthlyPayment(payment);
-      setPopupMessage(
-        `Loan Calculated: PKR ${loanAmount} with a monthly payment of PKR ${payment} for ${loanPeriod} years.`
-      );
-      setPopupType("success");
-      setShowPopup(true);
+      setOpenModal(true); // Show modal when loan calculation is successful
     }
   };
 
-  const handleGuarantorFormSubmit = () => {
-    // Save data to the database
-    console.log("Guarantor 1:", { name, cnic, email });
-    console.log("Guarantor 2:", { secondName, secondCnic, secondEmail, secondNumber });
-    // Proceed further or redirect as necessary
+  const handleCloseModal = () => {
+    setOpenModal(false); 
   };
-
-  useEffect(() => {
-    if (showPopup && popupType === "success") {
-      const firstPopupTimer = setTimeout(() => {
-        setShowPopup(false);
-        setGuarantorForm(true); // Show guarantor form after the first popup
-      }, 5000); // First popup closes after 5 seconds
-
-      return () => {
-        clearTimeout(firstPopupTimer);
-      };
-    }
-  }, [showPopup, popupType]);
 
   return (
     <div className="container mx-auto p-6 bg-gray-50 rounded-lg shadow-md">
       <h1 className="text-3xl font-bold text-center mb-8">Loan Application</h1>
-
-      {/* Popup */}
-      {showPopup && (
-        <div
-          className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 p-6 rounded-lg shadow-lg text-center ${popupType === "success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
-            }`}
-        >
-          <h2 className="text-xl font-semibold mb-4">
-            {popupType === "success" ? "Success" : "Error"}
-          </h2>
-          <p>{popupMessage}</p>
-        </div>
-      )}
-
-      {/* Guarantor Form */}
-      {guarantorForm && (
-        <div className="card p-6 bg-white rounded-lg shadow-lg text-center">
-          <h2 className="text-xl font-semibold mb-4">Enter Guarantor Details</h2>
-          {/* Guarantor 1 */}
-          <TextField
-            label="Guarantor 1 Name"
-            variant="outlined"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            className="w-full mb-2"
-          />
-          <TextField
-            label="Guarantor 1 CNIC"
-            variant="outlined"
-            value={cnic}
-            onChange={(e) => setCnic(e.target.value)}
-            className="w-full mb-2"
-          />
-          <TextField
-            label="Guarantor 1 Email"
-            variant="outlined"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full mb-2"
-          />
-          {/* Guarantor 2 */}
-          <TextField
-            label="Guarantor 2 Name"
-            variant="outlined"
-            value={secondName}
-            onChange={(e) => setSecondName(e.target.value)}
-            className="w-full mb-2"
-          />
-          <TextField
-            label="Guarantor 2 CNIC"
-            variant="outlined"
-            value={secondCnic}
-            onChange={(e) => setSecondCnic(e.target.value)}
-            className="w-full mb-2"
-          />
-          <TextField
-            label="Guarantor 2 Email"
-            variant="outlined"
-            value={secondEmail}
-            onChange={(e) => setSecondEmail(e.target.value)}
-            className="w-full mb-2"
-          />
-          <TextField
-            label="Guarantor 2 Phone Number"
-            variant="outlined"
-            value={secondNumber}
-            onChange={(e) => setSecondNumber(e.target.value)}
-            className="w-full mb-2"
-          />
-          <button
-            onClick={handleGuarantorFormSubmit}
-            className="bg-blue-600 text-white px-4 py-2 rounded-lg mt-4"
-          >
-            Submit
-          </button>
-        </div>
-      )}
 
       {/* Loan Form */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -266,6 +159,148 @@ const LoanCalculator = () => {
           Calculate Monthly Payment
         </button>
       </div>
+
+      {/* Modal Form */}
+      <Dialog
+        open={openModal}
+        onClose={handleCloseModal}
+        PaperProps={{
+          component: 'form',
+          onSubmit: (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.currentTarget);
+            const formJson = Object.fromEntries(formData.entries());
+            const name = formJson.name;
+            console.log(name); // handle form submission here
+            handleCloseModal();
+          },
+        }}
+      >
+        <DialogTitle>Loan Application Form</DialogTitle>
+        <DialogContent>
+          <DialogContentText>
+            Fill in your details along with two guarantees for loan approval.
+          </DialogContentText>
+          <TextField
+            autoFocus
+            required
+            margin="dense"
+            id="name"
+            name="name"
+            label="Full Name"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            required
+            margin="dense"
+            id="email"
+            name="email"
+            label="Email Address"
+            type="email"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            margin="dense"
+            id="picture"
+            name="picture"
+            label="Profile Picture"
+            type="file"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            required
+            margin="dense"
+            id="cnic"
+            name="cnic"
+            label="CNIC"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            required
+            margin="dense"
+            id="loanAmount"
+            name="loanAmount"
+            label="Loan Amount"
+            value={loanAmount}
+            type="text"
+            fullWidth
+            variant="standard"
+            disabled
+          />
+          {/* First Guarantee */}
+          <TextField
+            required
+            margin="dense"
+            id="guarantee1Name"
+            name="guarantee1Name"
+            label="First Guarantee Name"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            required
+            margin="dense"
+            id="guarantee1Email"
+            name="guarantee1Email"
+            label="First Guarantee Email"
+            type="email"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            required
+            margin="dense"
+            id="guarantee1Cnic"
+            name="guarantee1Cnic"
+            label="First Guarantee CNIC"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          {/* Second Guarantee */}
+          <TextField
+            required
+            margin="dense"
+            id="guarantee2Name"
+            name="guarantee2Name"
+            label="Second Guarantee Name"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            required
+            margin="dense"
+            id="guarantee2Email"
+            name="guarantee2Email"
+            label="Second Guarantee Email"
+            type="email"
+            fullWidth
+            variant="standard"
+          />
+          <TextField
+            required
+            margin="dense"
+            id="guarantee2Cnic"
+            name="guarantee2Cnic"
+            label="Second Guarantee CNIC"
+            type="text"
+            fullWidth
+            variant="standard"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseModal}>Cancel</Button>
+          <Button type="submit">Submit</Button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 };
