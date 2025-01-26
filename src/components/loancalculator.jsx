@@ -18,7 +18,7 @@ const loanCategories = {
     subCategories: ["Buy Stall", "Advance Rent for Shop", "Shop Assets", "Shop Machinery"],
   },
   "Education Loans": {
-    maxLoan: null, 
+    maxLoan: null,
     loanPeriod: 4,
     subCategories: ["University Fees", "Child Fees Loan"],
   },
@@ -38,6 +38,7 @@ const LoanCalculator = () => {
   const [name, setName] = useState("");
   const [showSecondPopup, setShowSecondPopup] = useState(false);
 
+  const user = true; // Set to null to show second popup
   // Loan calculation function
   const calculateLoanPayment = (loanAmount, loanPeriod) => {
     const annualRate = 0.1; // 10% annual interest
@@ -62,21 +63,20 @@ const LoanCalculator = () => {
       loanPeriod > maxLoanPeriod
     ) {
       setPopupMessage(
-        `Invalid input! Loan amount must be within ${
-          maxLoanAmount ? maxLoanAmount + " PKR" : "the required range"
+        `Invalid input! Loan amount must be within ${maxLoanAmount ? maxLoanAmount + " PKR" : "the required range"
         }, and duration must not exceed ${maxLoanPeriod} years.`
       );
-      
+
       setPopupType("error");
       setShowPopup(true);
     } else {
-        const payment = calculateLoanPayment(loanAmount, loanPeriod);
-        setMonthlyPayment(payment);
-        setPopupMessage(
-            `Loan Calculated: PKR ${loanAmount} with a monthly payment of PKR ${payment} for ${loanPeriod} years.`
-        );
-        setPopupType("success");
-        setShowPopup(true);
+      const payment = calculateLoanPayment(loanAmount, loanPeriod);
+      setMonthlyPayment(payment);
+      setPopupMessage(
+        `Loan Calculated: PKR ${loanAmount} with a monthly payment of PKR ${payment} for ${loanPeriod} years.`
+      );
+      setPopupType("success");
+      setShowPopup(true);
     }
   };
 
@@ -111,9 +111,8 @@ const LoanCalculator = () => {
       {/* Popup */}
       {showPopup && (
         <div
-          className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 p-6 rounded-lg shadow-lg text-center ${
-            popupType === "success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
-          }`}
+          className={`fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 p-6 rounded-lg shadow-lg text-center ${popupType === "success" ? "bg-green-100 text-green-700" : "bg-red-100 text-red-700"
+            }`}
         >
           <h2 className="text-xl font-semibold mb-4">
             {popupType === "success" ? "Success" : "Error"}
@@ -131,7 +130,7 @@ const LoanCalculator = () => {
       )}
 
       {/* Second Popup */}
-      {showSecondPopup && (
+      {!user && showSecondPopup && (
         <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 p-6 bg-white rounded-lg shadow-lg text-center">
           <h2 className="text-xl font-semibold mb-4">Enter Your Details</h2>
           <TextField
@@ -163,6 +162,7 @@ const LoanCalculator = () => {
           </button>
         </div>
       )}
+
 
       {/* Loan Form */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">

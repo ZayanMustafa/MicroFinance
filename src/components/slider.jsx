@@ -1,5 +1,4 @@
 import React from "react";
-import Saylani from '../assets/saylani.png';
 
 export default function Slider() {
     return (
@@ -9,7 +8,7 @@ export default function Slider() {
     {/* Item 1 */}
     <div className="hidden duration-700 ease-in-out" data-carousel-item="">
       <img
-        src="/docs/images/carousel/carousel-1.svg"
+        src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fvectorseek.com%2Fvector_logo%2Fsaylani-welfare-international-trust-logo-vector%2F&psig=AOvVaw2V4CV7vjT4rdHGXnRvgKRK&ust=1737936158773000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLjPgO2KkosDFQAAAAAdAAAAABAE"
         className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
         alt="..."
       />
@@ -17,7 +16,7 @@ export default function Slider() {
     {/* Item 2 */}
     <div className="hidden duration-700 ease-in-out" data-carousel-item="">
       <img
-        src={Saylani}
+        src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fvectorseek.com%2Fvector_logo%2Fsaylani-welfare-international-trust-logo-vector%2F&psig=AOvVaw2V4CV7vjT4rdHGXnRvgKRK&ust=1737936158773000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLjPgO2KkosDFQAAAAAdAAAAABAE"
         className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
         alt="..."
       />
@@ -25,7 +24,7 @@ export default function Slider() {
     {/* Item 3 */}
     <div className="hidden duration-700 ease-in-out" data-carousel-item="">
       <img
-        src={Saylani}
+        src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fvectorseek.com%2Fvector_logo%2Fsaylani-welfare-international-trust-logo-vector%2F&psig=AOvVaw2V4CV7vjT4rdHGXnRvgKRK&ust=1737936158773000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLjPgO2KkosDFQAAAAAdAAAAABAE"
         className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
         alt="..."
       />
@@ -33,14 +32,14 @@ export default function Slider() {
     {/* Item 4 */}
     <div className="hidden duration-700 ease-in-out" data-carousel-item="">
       <img
-        src={Saylani}
+        src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fvectorseek.com%2Fvector_logo%2Fsaylani-welfare-international-trust-logo-vector%2F&psig=AOvVaw2V4CV7vjT4rdHGXnRvgKRK&ust=1737936158773000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLjPgO2KkosDFQAAAAAdAAAAABAE"
         className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
         alt="..."
       />
     </div>
     <div className="hidden duration-700 ease-in-out" data-carousel-item="">
       <img
-        src={Saylani}
+        src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fvectorseek.com%2Fvector_logo%2Fsaylani-welfare-international-trust-logo-vector%2F&psig=AOvVaw2V4CV7vjT4rdHGXnRvgKRK&ust=1737936158773000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLjPgO2KkosDFQAAAAAdAAAAABAE"
         className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
         alt="Hasa"
       />
