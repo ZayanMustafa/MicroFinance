@@ -6,6 +6,7 @@ import MainPage from "./pages/user/main";
 import LoanCards from "./components/loancards";
 import Loader from "./components/loader";
 import UserApplications from "./pages/user/application";
+import AdminMain from "./pages/admin/adminmain";
 
 export default function App() {
   const [loading, setLoading] = useState(true);  
@@ -25,6 +26,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path={"/admin"} element={<AdminMain/>} ></Route>
         <Route path={"/app"} element={ <LoanCards/> } ></Route>
         <Route path={"/application"} element={< UserApplications/>} ></Route>
         <Route  path={"/"} element={< MainPage/>} ></Route>

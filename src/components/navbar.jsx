@@ -40,7 +40,7 @@ const Navbar = ({ userId, activePage }) => {
           className="flex items-center space-x-3 rtl:space-x-reverse"
         >
           <img
-            src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fsaylaniwelfare.com%2FEn&psig=AOvVaw26Rghgv-bUlneygyUimGe-&ust=1737938031377000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCODr2OmRkosDFQAAAAAdAAAAABAE"
+            src="https://student.saylaniwelfare.com/assets/logo-OpazD70S.png"
             className="h-8"
             alt="Logo"
           />
@@ -59,12 +59,12 @@ const Navbar = ({ userId, activePage }) => {
             <span className="sr-only">Open user menu</span>
             <img
               className="w-8 h-8 rounded-full"
-              src="/docs/images/people/profile-picture-3.jpg"
+              src="https://student.saylaniwelfare.com/assets/logo-OpazD70S.png"
               alt="user photo"
             />
           </button>
           <div
-            className={`absolute right-8 mt-12 w-48 z-50 ${dropdownOpen ? 'block' : 'hidden'} my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600`}
+            className={`absolute right-9 mt-35 w-48 z-50 ${dropdownOpen ? 'block' : 'hidden'} my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow-sm dark:bg-gray-700 dark:divide-gray-600`}
             id="user-dropdown"
           >
             <div className="px-4 py-3">

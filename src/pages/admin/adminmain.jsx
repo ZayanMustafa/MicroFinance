@@ -1,9 +1,11 @@
 import  React   from 'react';
-import Navbar from '../../components/navbar';
+import AdminNavbar from '../../components/adminnav';
 
-const AdminMain = () => {   
+const AdminMain = () => { 
+      
     return (
-        <Navbar/>
+        <AdminNavbar/>
+        
             
     );
 };

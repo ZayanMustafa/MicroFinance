@@ -32,14 +32,14 @@ export default function Slider() {
     {/* Item 4 */}
     <div className="hidden duration-700 ease-in-out" data-carousel-item="">
       <img
-        src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fvectorseek.com%2Fvector_logo%2Fsaylani-welfare-international-trust-logo-vector%2F&psig=AOvVaw2V4CV7vjT4rdHGXnRvgKRK&ust=1737936158773000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLjPgO2KkosDFQAAAAAdAAAAABAE"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Smitlogo_sinine_rgb.jpg/1024px-Smitlogo_sinine_rgb.jpg"
         className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
         alt="..."
       />
     </div>
     <div className="hidden duration-700 ease-in-out" data-carousel-item="">
       <img
-        src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fvectorseek.com%2Fvector_logo%2Fsaylani-welfare-international-trust-logo-vector%2F&psig=AOvVaw2V4CV7vjT4rdHGXnRvgKRK&ust=1737936158773000&source=images&cd=vfe&opi=89978449&ved=0CBEQjRxqFwoTCLjPgO2KkosDFQAAAAAdAAAAABAE"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/9f/Smitlogo_sinine_rgb.jpg/1024px-Smitlogo_sinine_rgb.jpg"
         className="absolute block w-full -translate-x-1/2 -translate-y-1/2 top-1/2 left-1/2"
         alt="Hasa"
       />
